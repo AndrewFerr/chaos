@@ -301,5 +301,5 @@ func (c *Convergence) checkRoomState(stateEvents, timelineEvents []Event, want m
 	if len(errs) == 0 {
 		return nil
 	}
-	return fmt.Errorf(strings.Join(errs, "\n"))
+	return fmt.Errorf("%s", strings.Join(errs, "\n"))
 }
