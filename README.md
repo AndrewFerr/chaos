@@ -14,7 +14,7 @@ Chaos is a partition/fault tolerance testing tool for homeservers. It can cause 
 
 ### Quick Start
 ```
-# Node 20+ required
+# Node 24+ required
 (cd web && pnpm install && pnpm build)
 go build ./cmd/chaos
 docker compose up -d
