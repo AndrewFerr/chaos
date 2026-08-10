@@ -4,9 +4,8 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/docker/docker/api/types/container"
-	"github.com/docker/docker/client"
 	"github.com/element-hq/chaos/config"
+	"github.com/moby/moby/client"
 )
 
 const RestartTypeDocker = "docker"
@@ -56,8 +55,9 @@ func (d *Docker) Config() *config.HomeserverConfig {
 }
 
 func (d *Docker) Restart() error {
-	return d.apiClient.ContainerRestart(context.Background(), d.containerName, container.StopOptions{
+	_, err := d.apiClient.ContainerRestart(context.Background(), d.containerName, client.ContainerRestartOptions{
 		Timeout: &d.timeoutSecs,
 		Signal:  d.signal,
 	})
+	return err
 }

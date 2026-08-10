@@ -5,9 +5,9 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/docker/docker/api/types/container"
-	"github.com/docker/docker/client"
 	"github.com/element-hq/chaos/config"
+	"github.com/moby/moby/api/types/container"
+	"github.com/moby/moby/client"
 )
 
 const SnapshotTypeDocker = "docker"
@@ -39,7 +39,7 @@ func NewDockerSnapshotter(hsc config.HomeserverConfig) (Snapshotter, error) {
 }
 
 func (s *DockerSnapshotter) Snapshot() (*Snapshot, error) {
-	reader, err := s.apiClient.ContainerStatsOneShot(context.Background(), s.containerName)
+	reader, err := s.apiClient.ContainerStats(context.Background(), s.containerName, client.ContainerStatsOptions{})
 	if err != nil {
 		return nil, fmt.Errorf("ContainerStatsOneShot: %s", err)
 	}
