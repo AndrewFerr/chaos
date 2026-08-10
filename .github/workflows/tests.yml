@@ -18,7 +18,7 @@ jobs:
 
             - name: Build
               run: |
-                (cd web && yarn install && yarn build)
+                (cd web && pnpm ci && pnpm build)
                 go build ./cmd/chaos
 
             - name: Run Demo
