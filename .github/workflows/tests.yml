@@ -16,9 +16,15 @@ jobs:
               with:
                 go-version: '1.21'
 
+            - name: Setup | pnpm
+              uses: pnpm/setup@84cb39b217b10273981911c288cd62326dc7c6d2 # v2.0.2
+              working-directory: web
+              with:
+                cache: true
+
             - name: Build
               run: |
-                (cd web && pnpm ci && pnpm build)
+                (cd web && pnpm build)
                 go build ./cmd/chaos
 
             - name: Run Demo
