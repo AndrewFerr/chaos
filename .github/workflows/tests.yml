@@ -20,8 +20,8 @@ jobs:
               uses: pnpm/setup@84cb39b217b10273981911c288cd62326dc7c6d2 # v2.0.2
               with:
                 cache: true
-                cache-dependency-path: web/pnpm-lock.yaml
-                package-json-file: web/package.json
+                cache-dependency-path: ./web/pnpm-lock.yaml
+                package-json-file: ./web/package.json
 
             - name: Build
               run: |
